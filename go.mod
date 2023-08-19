@@ -1,4 +1,4 @@
-module github.com/HILINE-APP/shared-lib/auth
+module github.com/HILINE-APP/auth-lib
 
 go 1.21.0
 
