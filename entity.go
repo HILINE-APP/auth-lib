@@ -1,8 +1,8 @@
 package auth
 
-const (
-	AUTH_URL = "http://localhost:8080"
-)
+// const (
+// 	AUTH_URL = "http://localhost:8080"
+// )
 
 type GetCurrentUserResponse struct {
 	Status string          `json:"status"`

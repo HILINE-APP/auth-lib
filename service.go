@@ -9,8 +9,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var (
+	cfg = Get()
+)
+
 func validateSecretKey(secretKey string) (record SecretKey, err error) {
-	req, err := http.NewRequest("POST", fmt.Sprintf("%s/api/auth/validate-secret-key", AUTH_URL), nil)
+	req, err := http.NewRequest("POST", fmt.Sprintf("%s/api/auth/validate-secret-key", cfg.AUTH_URL), nil)
 	if err != nil {
 		return
 	}
@@ -44,6 +48,7 @@ func validateSecretKey(secretKey string) (record SecretKey, err error) {
 }
 
 func ValidateCurrentUser(c *gin.Context) (user GetCurrentUserResponse, err error) {
+
 	secretKey := c.GetHeader("Secret-Key")
 
 	if secretKey != "" {
@@ -74,7 +79,7 @@ func ValidateCurrentUser(c *gin.Context) (user GetCurrentUserResponse, err error
 
 	token := c.GetHeader("Authorization")
 
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/api/auth/current-user", AUTH_URL), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/api/auth/current-user", cfg.AUTH_URL), nil)
 	if err != nil {
 		return
 	}
