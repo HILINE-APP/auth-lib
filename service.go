@@ -75,6 +75,8 @@ func ValidateCurrentUser(c *gin.Context) (user GetCurrentUserResponse, err error
 				User: simulatedUser,
 			},
 		}
+
+		return user, nil
 	}
 
 	token := c.GetHeader("Authorization")
